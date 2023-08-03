@@ -3,17 +3,17 @@ const jwt= require('jsonwebtoken');
 
 
 const userlogin=async(req,res,next)=>{
-    const{email,password}=req.body;
-    console.log(email,password);
+    const{plotNo,contactNo}=req.body;
+    console.log(plotNo,contactNo);
     let existingUser;
     try{
-        existingUser= await User.findOne({email:email});
+        existingProfile= await Profile.findOne({plot_no:plotno});
         console.log(1);
     } catch (err){
         return new Error(err);
         console.log(2);
     }
-    if(!existingUser)
+    if(!existingProfile)
     {
         console.log(3);
         return res.status(400).json({message:"User not found, Signup Please"}); 
